@@ -1,0 +1,46 @@
+body {
+    margin:0;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    margin:10px;
+}
+
+.header{
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    width: 240px;
+    height: 100px;
+    margin: 20px 20px 0px 0px;
+}
+
+#logo {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 20px 20px 0px 20px;
+    cursor: pointer;
+}
+
+#message {
+    height: 55px;
+    margin: 5px 20px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.progressbar {
+    width: 360px;
+    margin: 0px 20px 20px 20px;
+    background-color: #FDE24E;
+}
+#progressbar {
+    width: 20%;
+    height: 5px;
+    background-color: #4EB6DF;
+    transition:300ms linear;
+}
+
