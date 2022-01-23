@@ -1,4 +1,4 @@
-import eel, requests, json, uuid, minecraft_launcher_lib, subprocess, os
+import eel, requests, json, uuid, minecraft_launcher_lib, subprocess
 
 def setProgress(percentage, speed):
     eel.setProgressSpeed(speed)
@@ -30,7 +30,7 @@ def decode(text: str) -> str:
 
 options = None
 minecraft_version = None
-minecraft_director = None
+minecraft_directory = None
 
 @eel.expose
 def auth():
@@ -266,7 +266,7 @@ def auth():
         # 9 DOWNLOAD MINECRAFT:
         global minecraft_version, minecraft_directory
         minecraft_version = config['minecraft_version']
-        minecraft_directory = os.path.dirname(os.path.abspath(__file__))+'\\.minecraft'
+        minecraft_directory = minecraft_launcher_lib.utils.get_minecraft_directory()
         
         minecraft_launcher_lib.install.install_minecraft_version(minecraft_version, minecraft_directory,callback = {
             'setStatus': lambda text: eel.setMessage(text),
