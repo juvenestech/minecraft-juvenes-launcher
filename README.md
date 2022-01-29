@@ -10,6 +10,6 @@ Git
 ```sh
 git clone https://github.com/juvenestech/minecraft-juvenes-launcher
 cd minecraft-juvenes-launcher
-pip install requirements.txt
+pip install -r requirements.txt
 python -m eel app.py web --onefile --noconsole
 ```
