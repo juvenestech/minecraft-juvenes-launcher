@@ -21,6 +21,6 @@ python app.py
 git clone https://github.com/juvenestech/minecraft-juvenes-launcher
 cd minecraft-juvenes-launcher
 pip install -r requirements.txt
-pip install -r pyinstaller
+pip install pyinstaller
 python -m eel app.py web --onefile --noconsole
 ```
