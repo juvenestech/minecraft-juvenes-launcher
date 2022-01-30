@@ -307,6 +307,9 @@ def startMinecraft():
         subprocess.call(minecraft_command)
 
 eel.init('web')
-eel.start('index.html',size=(400,200), block=False)
+if eel.chrome.find_path() is not None:
+    eel.start('index.html',size=(400,200), block=False)
+else:
+    eel.start('index.html',size=(400,200), block=False, mode='user selection')
 while True:
     eel.sleep(10)
