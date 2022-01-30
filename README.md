@@ -4,7 +4,7 @@
 ```
 Python 3
 Git
-Java (suggested: jre-openjdk)
+Java (suggested: Java 17, jre-openjdk)
 ```
 
 ## Run:
