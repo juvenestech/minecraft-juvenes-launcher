@@ -29,7 +29,6 @@ python -m eel app.py web --onefile --noconsole
 -->
 # **minecraft-juvenes-launcher**
 
-## **Using the Program**    <!--Would suggest replacing "the program" with an appropriate name-->
 ## Requirements:
 * [Python 3](https://www.python.org/) or above (running/compiling the source code)
 * [Git](https://git-scm.com/) (cloning the repository)
@@ -71,7 +70,7 @@ python -m eel app.py web --onefile --noconsole
 ```
 At the end of the process, a new file will appear inside of the `dist` directory. It will be named `app.exe` if it got compiled on Windows, `app` if on MacOS or Linux.
 
-## **About the program**      <!-- Would suggest replacing "the program" with an appropriate name -->
+## **About**
 ![Juvenes APS - logo](web/favicon.png)
 
 <!-- Please change this part. Please.-->
