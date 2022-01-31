@@ -277,26 +277,18 @@ def auth():
 
         # 10 START MINECRAFT:
         global options
+        options = {
+            "username": minePrfl['name'],
+            "uuid": minePrfl["id"],
+            "token": mineAuth["access_token"],
+
+            "launcherName": "Juvenes",
+            "demo": config['minecraft_demo']
+        }
         if config["minecraft_server"]:
-            options = {
-                "username": minePrfl['name'],
-                "uuid": minePrfl["id"],
-                "token": mineAuth["access_token"],
-
-                "launcherName": "Juvenes",
-                "server": config['minecraft_server'],
-                "port": config['minecraft_port'],
-                "demo": config['minecraft_demo']
-            }
-        else:
-            options = {
-                "username": minePrfl['name'],
-                "uuid": minePrfl["id"],
-                "token": mineAuth["access_token"],
-
-                "launcherName": "Juvenes",
-                "demo": config['minecraft_demo']
-            }
+            options["server"] = config['minecraft_server']
+            options["port"] = config['minecraft_port']     
+       
         eel.setMessage('Download di Minecraft completato<br/>Avvio di Minecraft in corso...')
         setProgress(100, 0)
         startMinecraft()
