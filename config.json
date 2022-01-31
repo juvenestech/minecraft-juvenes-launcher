@@ -1,7 +1,7 @@
 {
     "client_id_encoded": "9h;8ij:=;=8i2fij=2<hj92j=>=2fg:h857i",
-    "minecraft_version": "1.18.1",
-    "minecraft_server": "redcraft.it",
-    "minecraft_port": "25565",
-    "minecraft_demo": true
+    "minecraft_version": "1.17.1",
+    "minecraft_server": "",
+    "minecraft_port": "",
+    "minecraft_demo": false
 }
