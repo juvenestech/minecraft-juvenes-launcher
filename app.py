@@ -283,10 +283,12 @@ def auth():
             "token": mineAuth["access_token"],
 
             "launcherName": "Juvenes",
-            "server": config['minecraft_server'],
-            "port": config['minecraft_port'],
             "demo": config['minecraft_demo']
         }
+        if config["minecraft_server"]:
+            options["server"] = config['minecraft_server']
+            options["port"] = config['minecraft_port']     
+       
         eel.setMessage('Download di Minecraft completato<br/>Avvio di Minecraft in corso...')
         setProgress(100, 0)
         startMinecraft()
