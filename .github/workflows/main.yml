@@ -23,8 +23,6 @@ jobs:
     steps:
       - name: Check-out repository
         uses: actions/checkout@v3
-        with:
-          ref: main
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -38,11 +36,12 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
+          pip install pyinstaller
           
       # Build python script into a stand-alone exe
-      - uses: Nuitka/Nuitka-Action@v0.4
-        with:
-          script-name: app.py
+      - name: Build App
+        run: |
+          python -m eel app.py web --onefile --noconsole
   
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
