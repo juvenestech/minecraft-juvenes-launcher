@@ -1,4 +1,4 @@
-import eel, requests, json, uuid, minecraft_launcher_lib, subprocess
+import eel, requests, json, uuid, minecraft_launcher_lib, subprocess, traceback
 
 def setProgress(percentage, speed):
     eel.setProgressSpeed(speed)
@@ -41,7 +41,7 @@ def auth():
 
         # 0 CONFIG:
         def config():
-            url = 'https://raw.githubusercontent.com/juvenestech/minecraft-juvenes-launcher/main/config.json' 
+            url = 'https://raw.githubusercontent.com/juvenestech/minecraft-juvenes-launcher/main/config.json'
             r = requests.get(url)
 
             if r.status_code != 200:
@@ -105,7 +105,7 @@ def auth():
                 elif error != 'authorization_pending':
                     break
 
-            if error is not None: 
+            if error is not None:
                 eel.setCode(f'ERRORE 2.{r.status_code}')
                 eel.setMessage('Non è stato possibile autenticare il tuo codice.')
                 setProgress(100, 500)
@@ -132,7 +132,7 @@ def auth():
             headers = {'Accept': 'application/json','Content-Type': 'application/json'}
             r = requests.post(url, headers=headers, data=json.dumps(payload))
 
-            if r.status_code != 200: 
+            if r.status_code != 200:
                 eel.setCode(f'ERRORE 3.{r.status_code}')
                 eel.setMessage('Non è stato possibile autenticare il tuo codice.')
                 setProgress(100, 500)
@@ -162,7 +162,7 @@ def auth():
             headers = {'Accept': 'application/json','Content-Type': 'application/json'}
             r = requests.post(url, headers=headers, data=json.dumps(payload))
 
-            if r.status_code != 200: 
+            if r.status_code != 200:
                 eel.setCode(f'ERRORE 4.{r.status_code}')
                 eel.setMessage('Non è stato possibile ottenere informazioni sul GamerTag.')
                 setProgress(100, 500)
@@ -201,7 +201,7 @@ def auth():
             headers = {'Accept': 'application/json','Content-Type': 'application/json'}
             r = requests.post(url, headers=headers, data=json.dumps(payload))
 
-            if r.status_code != 200: 
+            if r.status_code != 200:
                 eel.setCode(f'ERRORE 6.{r.status_code}')
                 eel.setMessage('Non è stato possibile autenticarsi su Minecraft.')
                 setProgress(100, 500)
@@ -267,7 +267,7 @@ def auth():
         global minecraft_version, minecraft_directory
         minecraft_version = config['minecraft_version']
         minecraft_directory = minecraft_launcher_lib.utils.get_minecraft_directory()
-        
+
         minecraft_launcher_lib.install.install_minecraft_version(minecraft_version, minecraft_directory,callback = {
             'setStatus': lambda text: eel.setMessage(text),
             'setMax': setMaxProgress,
@@ -287,21 +287,22 @@ def auth():
         }
         if config["minecraft_server"]:
             options["server"] = config['minecraft_server']
-            options["port"] = config['minecraft_port']     
-       
+            options["port"] = config['minecraft_port']
+
         eel.setMessage('Download di Minecraft completato<br/>Avvio di Minecraft in corso...')
         setProgress(100, 0)
         startMinecraft()
 
     except Exception as e:
         print(e)
+        traceback.print_exc()
         eel.setCode(f'ERRORE')
         eel.setMessage(e)
         setProgress(100, 500)
         eel.setProgressError(True)
         exit(0)
 
-@eel.expose       
+@eel.expose
 def startMinecraft():
     global minecraft_version, minecraft_directory, options
     if minecraft_version is not None and minecraft_directory is not None and options is not None:
